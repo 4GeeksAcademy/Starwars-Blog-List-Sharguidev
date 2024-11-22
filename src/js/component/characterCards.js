@@ -25,7 +25,7 @@ const CharacterCards = () => {
                     <div className="card-body">
                         <h5 className="card-title">{character.name}</h5>
                         <p className="card-text">
-                            Name: {character.name}<br />
+                            Gender: {character.gender}<br />
                             Hair Color: {character.hair_color}<br />
                             Eye Color: {character.eye_color}<br />
                         </p>

@@ -1,11 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 
-const CharacterProfile = () => {
+const CharacterProfile = props => {
+
+    const { store, actions } = useContext(Context);
+    const params = useParams();
+
+
+    useEffect(() => {
+        actions.loadSpecificCharacter(params.theid);
+    }, [params.theid]);
+
+
+
+
     return (
         <>
-            <div className="row">
-                <div className="col-4 ms-auto mt-5"><img src="https://via.placeholder.com/500?text=Character+Image+Not+Found"></img></div>
-                <div className="col-6 ms-auto mt-5">
+            <div className="row" >
+                <div className="col-4 ms-auto mt-5">
+                    <img
+                        src={`https://starwars-visualguide.com/assets/img/characters/${params.theid}.jpg`}
+                        onError={(event) => event.target.src = "https://via.placeholder.com/600?text=Character+Image+Not+Found"}
+                        className="card-img-top"
+                        alt="{store.characters[params.theid].name}"
+                    />
+                </div>
+                <div className="col-6 mt-5">
                     <h2>Luke Skywalker</h2>
                     <p>lorem 30 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, accusamus</p>
                 </div>

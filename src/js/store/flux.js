@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			loadCharacters: () => {
-				fetch("https://swapi.dev/api/people/")
+				fetch("https://swapi.tech/api/people/")
 					.then(response => response.json())
 					.then(data => {
 						setStore({ characters: data.results });
@@ -52,13 +52,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadPlanets: () => {
-				fetch("https://swapi.dev/api/planets/")
+				fetch("https://swapi.tech/api/planets/")
 					.then(response => response.json())
 					.then(data => {
 						setStore({ planets: data.results });
 					})
 					.catch(error => console.log(error));
-			}
+			},
+
+			loadSpecificCharacter: async (theid) => {
+				const resp = await fetch(`https://swapi.dev/api/people/${theid}`)
+					.then(response => response.json())
+					.then(data => {
+						setStore({ characters: data.results });
+					})
+					.catch(error => console.log(error));
+			},
 		}
 	};
 };
