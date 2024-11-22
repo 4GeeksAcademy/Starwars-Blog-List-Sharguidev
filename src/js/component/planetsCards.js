@@ -14,11 +14,11 @@ const PlanetsCards = () => {
     const characterItems = store.planets.map((planet) => (
 
 
-        <Carousel.Item key={planet.id}>
+        <Carousel.Item key={planet.uid}>
             <div className="col-4">
-                <div className="card">
+                <div className="card" style={{ minHeight: "550px" }}>
                     <img
-                        src={`https://starwars-visualguide.com/assets/img/characters/${planet.id}.jpg`}
+                        src={`https://starwars-visualguide.com/assets/img/characters/${planet.uidid}.jpg`}
                         onError={(event) => event.target.src = "https://via.placeholder.com/300?text=Character+Image+Not+Found"}
                         className="card-img-top"
                         alt={planet.name} />

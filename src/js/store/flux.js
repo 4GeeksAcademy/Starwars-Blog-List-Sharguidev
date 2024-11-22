@@ -15,7 +15,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			characters: [],
 			favorites: [],
-			planets: []
+			planets: [],
+			specificCharacters: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -61,10 +62,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadSpecificCharacter: async (theid) => {
-				const resp = await fetch(`https://swapi.dev/api/people/${theid}`)
+				const resp = await fetch(`https://swapi.tech/api/people/${theid}`)
 					.then(response => response.json())
 					.then(data => {
-						setStore({ characters: data.results });
+						setStore({ specificCharacter: data });
 					})
 					.catch(error => console.log(error));
 			},

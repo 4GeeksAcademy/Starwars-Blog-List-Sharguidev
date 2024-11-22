@@ -8,3 +8,18 @@ body {
   color: #000;
   font-family: "Press Start 2P", cursive;
 }
+
+
+.card-container {
+  width: 18rem;
+}
+
+.btn-more{
+  width: 60%;
+  margin-top: 20%;
+}
+
+.btn-fav{
+  
+  margin-top: 20%;
+}

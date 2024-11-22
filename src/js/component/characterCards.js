@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { Carousel } from "react-bootstrap";
+
 
 const CharacterCards = () => {
 
@@ -10,42 +10,43 @@ const CharacterCards = () => {
         actions.loadCharacters();
     }, []);
 
-
+    console.log(store.characters);
     const characterItems = store.characters.map((character) => (
-        <Carousel.Item key={character.id}>
-            <div className="col-4">
-                <div className="card" >
-                    <img
-                        src={`https://starwars-visualguide.com/assets/img/characters/${character.id}.jpg`}
-                        onError={(event) => event.target.src = "https://via.placeholder.com/300?text=Character+Image+Not+Found"}
-                        className="card-img-top"
-                        alt={character.name}
-                    />
 
-                    <div className="card-body">
-                        <h5 className="card-title">{character.name}</h5>
-                        <p className="card-text">
-                            Gender: {character.gender}<br />
-                            Hair Color: {character.hair_color}<br />
-                            Eye Color: {character.eye_color}<br />
-                        </p>
+        <div className="card-container mb-4" key={character.uid}>
+            <div className="card h-100" >
+                <img
+                    src={`https://starwars-visualguide.com/assets/img/characters/${character.uid}.jpg`}
+                    onError={(event) => event.target.src = "https://via.placeholder.com/300?text=Character+Image+Not+Found"}
+                    className="card-img-top"
+                    alt={character.name}
+                />
 
-                        <div className="btn-group mx-5 ">
-                            <Link type="button" to="/" className="btn btn-outline-primary me-5 ms-0 ">Learn More!</Link>
-                            <Link type="button" to="/" className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></Link>
-                        </div>
-                    </div>
+                <div className="card-body">
+                    <h5 className="card-title">{character.name}</h5>
+                    <p className="card-text">
+                        Gender: {character.gender}<br />
+                        Hair Color: {character.hair_color}<br />
+                        Eye Color: {character.eye_color}<br />
+                    </p>
+
+
+                    <Link type="button" to="/" className="btn btn-outline-primary btn-more me-4">Learn More!</Link>
+                    <Link type="button" to="/" className="btn btn-outline-warning btn-fav"><i className="fa-regular fa-heart"></i></Link>
+
                 </div>
             </div>
-        </Carousel.Item>
+        </div>
+
     ));
 
     return (
         <div className="container">
-            <h2 className="text-start mb-5">Characters</h2>
-            <Carousel>
+            <h2 className="text-start mb-3">Characters</h2>
+            <div className="row flex-nowrap overflow-auto ">
+                {/* overflow x-auto solo este en el eje X */}
                 {characterItems}
-            </Carousel>
+            </div>
         </div>
     );
 
