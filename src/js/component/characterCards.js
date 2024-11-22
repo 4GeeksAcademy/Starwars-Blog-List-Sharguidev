@@ -24,15 +24,17 @@ const CharacterCards = () => {
 
                 <div className="card-body">
                     <h5 className="card-title">{character.name}</h5>
-                    <p className="card-text">
+                    <p className="card-text mb-5">
                         Gender: {character.gender}<br />
                         Hair Color: {character.hair_color}<br />
                         Eye Color: {character.eye_color}<br />
                     </p>
 
+                    <div className="btn-container ">
+                        <Link type="button" to="/" className="btn btn-outline-primary btn-more me-4">Learn More!</Link>
+                        <Link type="button" to="/" className="btn btn-outline-warning btn-fav"><i className="fa-regular fa-heart"></i></Link>
 
-                    <Link type="button" to="/" className="btn btn-outline-primary btn-more me-4">Learn More!</Link>
-                    <Link type="button" to="/" className="btn btn-outline-warning btn-fav"><i className="fa-regular fa-heart"></i></Link>
+                    </div>
 
                 </div>
             </div>
