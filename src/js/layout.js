@@ -7,6 +7,7 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 import CharacterProfile from "./views/characterProfile";
+import PlanetProfile from "./views/planetProfile";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -28,6 +29,7 @@ const Layout = () => {
             <Route path="/single/:theid" element={<Single />} />
             <Route path="*" element={<h1>Not found!</h1>} />
             <Route path="/characterProfile/:theid" element={<CharacterProfile />} />
+            <Route path="/planetProfile/:theid" element={<PlanetProfile />} />
             {/* <Route path="/characterProfile/" element={<CharacterProfile />} /> */}
           </Routes>
           <Footer />

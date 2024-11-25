@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 
-const CharacterProfile = () => {
+const PlanetProfile = props => {
 
     const { store, actions } = useContext(Context);
     const params = useParams();
@@ -10,7 +10,7 @@ const CharacterProfile = () => {
 
 
     useEffect(() => {
-        actions.loadSpecificCharacter(params.theid);
+        actions.loadSpecificPlanet(params.theid);
     }, [params.theid]);
 
 
@@ -21,19 +21,15 @@ const CharacterProfile = () => {
             <div className="row" >
                 <div className="col-4 ms-auto mt-5">
                     <img
-                        src={`https://starwars-visualguide.com/assets/img/characters/${params.theid}.jpg`}
+                        src={`https://starwars-visualguide.com/assets/img/planets/${params.theid}.jpg`}
                         onError={(event) => event.target.src = "https://via.placeholder.com/600?text=Character+Image+Not+Found"}
                         className="card-img-top"
-                        alt={store.specificCharacter?.name}
+                        alt={store.specificPlanet?.name}
                     />
                 </div>
                 <div className="col-6 mt-5">
-                    <h2>{store.specificCharacter?.name}</h2>
-                    <p className="mt-4">Star Wars is an American epic space opera media franchise created by George Lucas,
-                        which began with the eponymous 1977 film[a] and quickly became a worldwide pop culture phenomenon.
-                        The franchise has been expanded into various films and other media, including television series, video games, novels,
-                        comic books, theme park attractions, and themed areas, comprising an all-encompassing fictional universe. Star Wars is
-                        considered one of the highest-grossing media franchises of all time.</p>
+                    <h2>{store.specificPlanet?.name}</h2>
+                    <p>lorem 30 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, accusamus</p>
                 </div>
             </div>
             <hr className="text-danger d-flex mx-auto" style={{ width: "90%", height: "3px" }}></hr>
@@ -43,43 +39,43 @@ const CharacterProfile = () => {
                         Name
                     </strong>
                     </p>
-                    <p>{store.specificCharacter?.name}</p>
+                    <p>{store.specificPlanet?.name}</p>
                 </div>
                 <div className="col-2 mt-5">
                     <p><strong>
-                        Birth Year
+                        Diameter
                     </strong>
                     </p>
-                    <p>{store.specificCharacter?.birth_year}</p>
+                    <p>{store.specificPlanet?.diameter}</p>
                 </div>
                 <div className="col-2  mt-5">
                     <p><strong>
-                        Gender
+                        Gravity
                     </strong>
                     </p>
-                    <p>{store.specificCharacter?.gender}</p>
+                    <p>{store.specificPlanet?.gravity}</p>
                     {/* //? optional chaining */}
                 </div>
                 <div className="col-2  mt-5">
                     <p><strong>
-                        Height
+                        Population
                     </strong>
                     </p>
-                    <p>{store.specificCharacter?.height}</p>
+                    <p>{store.specificPlanet?.population}</p>
                 </div>
                 <div className="col-2  mt-5">
                     <p><strong>
-                        Skin Color
+                        Terrain
                     </strong>
                     </p>
-                    <p>{store.specificCharacter?.skin_color}</p>
+                    <p>{store.specificPlanet?.terrain}</p>
                 </div>
                 <div className="col-2  mt-5">
                     <p><strong>
-                        Eye Color
+                        Surface Water
                     </strong>
                     </p>
-                    <p>{store.specificCharacter?.eye_color}</p>
+                    <p>{store.specificPlanet?.surface_water}</p>
                 </div>
 
             </div>
@@ -88,4 +84,4 @@ const CharacterProfile = () => {
 };
 
 
-export default CharacterProfile
+export default PlanetProfile;

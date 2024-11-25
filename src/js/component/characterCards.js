@@ -31,8 +31,13 @@ const CharacterCards = () => {
                     </p>
 
                     <div className="btn-container ">
-                        <Link type="button" to="/" className="btn btn-outline-primary btn-more me-4">Learn More!</Link>
-                        <Link type="button" to="/" className="btn btn-outline-warning btn-fav"><i className="fa-regular fa-heart"></i></Link>
+                        <Link type="button" to={"/characterProfile/" + character.uid} className="btn btn-outline-primary btn-more me-4">Learn More!</Link>
+                        <button
+                            className="btn btn-outline-warning btn-fav"
+                        >
+
+                            <i className="fa-regular fa-heart"></i>
+                        </button>
 
                     </div>
 

@@ -16,7 +16,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			favorites: [],
 			planets: [],
-			specificCharacters: {}
+			specificCharacters: {},
+			specificPlanet: {},
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -62,12 +64,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadSpecificCharacter: async (theid) => {
-				const resp = await fetch(`https://swapi.tech/api/people/${theid}`)
+				const resp = await fetch(`https://swapi.dev/api/people/${theid}`)
 					.then(response => response.json())
 					.then(data => {
 						setStore({ specificCharacter: data });
 					})
 					.catch(error => console.log(error));
+			},
+
+			loadSpecificPlanet: async (theid) => {
+				const resp = await fetch(`https://swapi.dev/api/planets/${theid}`)
+					.then(response => response.json())
+					.then(data => {
+						setStore({ specificPlanet: data });
+					})
+					.catch(error => console.log(error));
+			},
+
+			addFavorites: (line) => {
+				const store = getStore();
+				const favorite = { name: line.name };
+				setStore({ favorites: [...store.favorites, favorite] });
+			},
+
+			deleteFavorites: (theid) => {
+				const store = getStore();
+				const favorites = store.favorites;
+				const index = favorites.indexOf(theid);
+				favorites.splice(index, 1);
+				setStore({ favorites });
 			},
 		}
 	};
