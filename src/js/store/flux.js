@@ -81,16 +81,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(error));
 			},
 
-			addFavorites: (line) => {
-				const store = getStore();
-				const favorite = { name: line.name };
-				setStore({ favorites: [...store.favorites, favorite] });
-			},
-
-			deleteFavorites: (theid) => {
+			addFavorites: (theid) => {
 				const store = getStore();
 				const favorites = store.favorites;
-				const index = favorites.indexOf(theid);
+				favorites.push(theid);
+				setStore({ favorites });
+			},
+
+
+			deleteFavorites: (item) => {
+				const store = getStore();
+				const favorites = store.favorites;
+				const index = favorites.indexOf(item);
 				favorites.splice(index, 1);
 				setStore({ favorites });
 			},

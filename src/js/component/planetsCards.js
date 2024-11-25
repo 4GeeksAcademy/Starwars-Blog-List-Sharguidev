@@ -32,7 +32,13 @@ const PlanetsCards = () => {
 
                     <div className="btn-group mx-5 ">
                         <Link type="button" to={"/planetProfile/" + planet.uid} className="btn btn-outline-primary me-5 ms-0 ">Learn More!</Link>
-                        <Link type="button" to="/" className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></Link>
+                        <button
+                            className="btn btn-outline-warning btn-fav"
+                            onClick={() => actions.addFavorite(planet.name)}
+                        >
+                            <i className="fa-regular fa-heart"></i>
+                        </button>
+
                     </div>
                 </div>
 

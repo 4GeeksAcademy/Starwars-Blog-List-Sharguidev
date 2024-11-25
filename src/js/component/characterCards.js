@@ -34,8 +34,8 @@ const CharacterCards = () => {
                         <Link type="button" to={"/characterProfile/" + character.uid} className="btn btn-outline-primary btn-more me-4">Learn More!</Link>
                         <button
                             className="btn btn-outline-warning btn-fav"
+                            onClick={() => actions.addFavorite(character.name)}
                         >
-
                             <i className="fa-regular fa-heart"></i>
                         </button>
 

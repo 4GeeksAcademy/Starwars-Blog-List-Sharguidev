@@ -36,8 +36,11 @@ export const Navbar = () => {
                   ) : (
                     store.favorites.map((theid) => {
                       return (
-                        <li>
-
+                        <li className="d-flex justify-content-between py-2" key={item.uid} >
+                          <a className="dropdown-item" href="#">{item.name}</a>
+                          <button
+                            onClick={() => actions.deleteFavorites(theid.uid)}
+                          ><i className="fa-solid fa-trash"></i></button>
                         </li>
                       );
                     })
