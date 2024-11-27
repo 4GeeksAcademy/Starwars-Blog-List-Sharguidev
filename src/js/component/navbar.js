@@ -6,6 +6,8 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 
   const { store, actions } = useContext(Context);
+  console.log(store.favorites);
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -27,19 +29,19 @@ export const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Favorites
+                Favorites <span>{store.favorites.length}</span>
               </a>
               <ul className="dropdown-menu text-start dropdown-menu-end">
                 {
                   store.favorites.length === 0 ? (
                     <li className="py-5" >Don't you have favorites?</li>
                   ) : (
-                    store.favorites.map((theid) => {
+                    store.favorites.map((item) => {
                       return (
                         <li className="d-flex justify-content-between py-2" key={item.uid} >
-                          <a className="dropdown-item" href="#">{item.name}</a>
+                          <a className="dropdown-item " href="#">{item}</a>
                           <button
-                            onClick={() => actions.deleteFavorites(theid.uid)}
+                            onClick={() => actions.deleteFavorites(item.uid)}
                           ><i className="fa-solid fa-trash"></i></button>
                         </li>
                       );

@@ -81,11 +81,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(error));
 			},
 
-			addFavorites: (theid) => {
+			addFavorites: (item) => {
 				const store = getStore();
-				const favorites = store.favorites;
-				favorites.push(theid);
-				setStore({ favorites });
+				setStore({ favorites: [...store.favorites, item] });
 			},
 
 

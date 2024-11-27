@@ -24,17 +24,17 @@ const PlanetsCards = () => {
 
                 <div className="card-body">
                     <h5 className="card-title">{planet.name}</h5>
-                    <p className="card-text">
+                    <p className="card-text mb-5">
                         Name: {planet.name}<br />
                         Population: {planet.population}<br />
                         Terrain: {planet.terrain}<br />
                     </p>
 
-                    <div className="btn-group mx-5 ">
-                        <Link type="button" to={"/planetProfile/" + planet.uid} className="btn btn-outline-primary me-5 ms-0 ">Learn More!</Link>
+                    <div className="btn-container ">
+                        <Link type="button" to={"/planetProfile/" + planet.uid} className="btn btn-outline-primary btn-more me-4">Learn More!</Link>
                         <button
                             className="btn btn-outline-warning btn-fav"
-                            onClick={() => actions.addFavorite(planet.name)}
+                            onClick={() => actions.addFavorites(planet.name)}
                         >
                             <i className="fa-regular fa-heart"></i>
                         </button>
@@ -49,7 +49,7 @@ const PlanetsCards = () => {
 
     return (
         <div className="container">
-            <h2 className="text-start mb-5">Planets</h2>
+            <h2 className="text-start mb-3">Planets</h2>
             <div className="row flex-nowrap overflow-auto">
                 {planetsItems}
             </div>
